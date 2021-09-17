@@ -5,8 +5,9 @@
 ```
 aws s3 sync s3://aws-ml-blog/artifacts/Using-streaming-ingestion-with-Amazon-SageMaker-Feature-Store/ s3://<bucket-name>/artifacts/Using-streaming-ingestion-with-Amazon-SageMaker-Feature-Store
 ```
-3. upload boto3 zip to the S3 bucket 
-4. If your CloudFormation has already created a pipeline with the same yaml file, you may consider changing the parameter names that was appended with `-yahoo`.
+3. Now there should be two zip files and a yaml file in the bucket. The two zip files contains lambda functions. Change these files now if needed. 
+If your CloudFormation has already created a pipeline with the same yaml file, you may consider changing the parameter names that was appended with `-yahoo`.
+4. Upload boto3 zip to the S3 bucket. 
 5. Visit this URL with your own parameters 
 ```
 https://<REGION-NAME>.console.aws.amazon.com/cloudformation/home
@@ -30,7 +31,7 @@ sagemaker-featurestore-template.yaml
 ### Notebook
 1. Once you see your CloudFormation shows "CREATE_COMPLETE", navigate to Amazon SageMaker in the AWS console and click on the 'Notebook Instances' tab on the left.
 2. Click "Open Jupyter" on the top right and navigate to the "notebooks" folder. 
-3. 
+3. Use ``conda_python3` as your kernel:
 #### Notebook_0: 
 - If you are not running the credit card example, you should skip the data generation steps in this notebook and replace `transactions.csv` with your own data.
 - generate transaction records 
@@ -58,4 +59,8 @@ sagemaker-featurestore-template.yaml
 - Can call `kinesis_client.put_record()` to put in more record
 #### Notebook_5:
 - Tear down 
+
+### Teardown CloudFormation
+Select the CloudFormation instance and delete it. This will automatically delete the CloudFormation instance (and associated configurations so that the names will be available again), the Lambda instance and the Sagemaker jupyter instance.
+Select the Kinesis instance and delete it. 
 
