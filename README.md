@@ -31,7 +31,7 @@ sagemaker-featurestore-template.yaml
 1. Once you see your CloudFormation shows "CREATE_COMPLETE", navigate to Amazon SageMaker in the AWS console and click on the 'Notebook Instances' tab on the left.
 2. Click "Open Jupyter" on the top right and navigate to the "notebooks" folder. 
 3. 
-* Notebook_0: 
+#### Notebook_0: 
 - generate transaction records 
 - insert fraud records
 - Save to an s3 bucket (AmazonS3/sagemaker-us-west-1-302276091756/raw/)
