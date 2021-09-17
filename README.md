@@ -32,10 +32,12 @@ sagemaker-featurestore-template.yaml
 2. Click "Open Jupyter" on the top right and navigate to the "notebooks" folder. 
 3. 
 #### Notebook_0: 
+- If you are not running the credit card example, you should skip the data generation steps in this notebook and replace `transactions.csv` with your own data.
 - generate transaction records 
 - insert fraud records
 - Save to an s3 bucket (AmazonS3/sagemaker-us-west-1-302276091756/raw/)
-* Notebook_1:
+#### Notebook_1:
+- Replace the stack name with the stack name in your CloudFormation
 - Create online-only feature groups
 	- Input feature schema is defined at amazon-sagemaker-feature-store-streaming-aggregation/notebooks/schema
 	- Create feature groups 
@@ -43,17 +45,17 @@ sagemaker-featurestore-template.yaml
 - Create an Amazon Kinesis Data Applications (KDA) application
 	- SQL code to query the last 10 min 
 	- Specify input & output
-* Notebook_2:
+#### Notebook_2:
 - Run SageMaker Processing Job on the input S3 bucket to create aggregated features (now a dataframe) and writes to S3 
 - Verify records exists in the feature group 
-* Notebook_3:
+#### Notebook_3:
 - Split data into train & test sets 
 - Train with XGBoost 
 - Test prediction 
-* Notebook_4:
+#### Notebook_4:
 - Run test data 
 - Monitor on CloudWatch 
 - Can call `kinesis_client.put_record()` to put in more record
-* Notebook_5:
+#### Notebook_5:
 - Tear down 
 
